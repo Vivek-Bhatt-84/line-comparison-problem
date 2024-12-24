@@ -10,26 +10,56 @@ double calcLength(int x1 ,int y1 ,int x2 ,int y2){
 
 }
 
+bool areEqual(int x1 ,int y1 ,int x2 ,int y2,int a1, int b1, int a2, int b2){
+
+    // calculate length of 2 lines 
+    double length1 = calcLength(x1, y1, x2, y2);
+    double length2 = calcLength(a1, b1, a2, b2);
+
+    if (length1 != length2) return false;
+
+    // Check if endpoints match, order doesn't matter
+    if ((x1 == a1 && y1 == b1 && x2 == a2 && y2 == b2) || 
+        (x1 == a2 && y1 == b2 && x2 == a1 && y2 == b1)) {
+        return true;
+    }
+
+    return false;
+}
+
 int main()
 {
     cout << "Welcome to line-Comparison-computation-program" << endl;
 
+    // input of line 1
     int x1 , x2 , y1 , y2 ;
-    cout << "Enter the co-ordinates of point P ." << endl;
-    cout << "Enter x co-ordinate of point P ." << endl;
-    cin >> x1 ;
-    cout << "Enter y co-ordinate of point P ." << endl;
-    cin >> y1 ;
-
-    cout << "Enter the co-ordinates of point Q ." << endl;
-    cout << "Enter x co-ordinate of point Q ." << endl;
-    cin >> x2 ;
-    cout << "Enter y co-ordinate of point Q ." << endl;
-    cin >> y2 ;
+    cout << "Enter the coordinates of Line 1:" << endl;
+    cout << "Point P (x1, y1): ";
+    cin >> x1 >> y1;
+    cout << "Point Q (x2, y2): ";
+    cin >> x2 >> y2;
 
 
-    double resLength = calcLength(x1 ,y1 ,x2 ,y2);
-    cout << "Length of line joining given two points is : " << resLength << endl ;
+    // Input for Line 2
+    int a1, b1, a2, b2;
+    cout << "Enter the coordinates of Line 2:" << endl;
+    cout << "Point A (a1, b1): ";
+    cin >> a1 >> b1;
+    cout << "Point B (a2, b2): ";
+    cin >> a2 >> b2;
+
+
+    double resLength1 = calcLength(x1 ,y1 ,x2 ,y2);
+    double resLength2 = calcLength(a1 ,b1 ,a2 ,b2);
+    cout << "Length of line 1 : " << resLength1 << endl ;
+    cout << "Length of line 2 : " << resLength2 << endl ;
+
+    // Check if two lines are equal 
+    if (areEqual(x1, y1, x2, y2, a1, b1, a2, b2)) {
+        cout << "The two lines are equal." << endl;
+    } else {
+        cout << "The two lines are not equal." << endl;
+    }
 
 
     return 0;
