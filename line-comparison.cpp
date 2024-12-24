@@ -10,6 +10,22 @@ double calcLength(int x1 ,int y1 ,int x2 ,int y2){
 
 }
 
+void compareLines(int x1, int y1, int x2, int y2, int a1, int b1, int a2, int b2) {
+    double length1 = calcLength(x1, y1, x2, y2);
+    double length2 = calcLength(a1, b1, a2, b2);
+
+    cout << "Length of Line 1: " << length1 << endl;
+    cout << "Length of Line 2: " << length2 << endl;
+
+    if (length1 == length2) {
+        cout << "The two lines are equal." << endl;
+    } else if (length1 > length2) {
+        cout << "Line 1 is greater than Line 2." << endl;
+    } else {
+        cout << "Line 1 is less than Line 2." << endl;
+    }
+}
+
 bool areEqual(int x1 ,int y1 ,int x2 ,int y2,int a1, int b1, int a2, int b2){
 
     // calculate length of 2 lines 
@@ -60,6 +76,10 @@ int main()
     } else {
         cout << "The two lines are not equal." << endl;
     }
+
+
+    // Compare two lines 
+    compareLines(x1, y1, x2, y2, a1, b1, a2, b2);
 
 
     return 0;
